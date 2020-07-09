@@ -11,6 +11,7 @@ public class DistributeThings : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        shuffle(things);
         // Obtain parent positon:
         Transform trans;
         trans = this.gameObject.GetComponent<Transform>();
@@ -47,5 +48,18 @@ public class DistributeThings : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
+
+
+    void shuffle(GameObject[] stuff)
+    {
+        // Knuth shuffle algorithm :: courtesy of Wikipedia :)
+        for (int ii = 0; ii < stuff.Length; ii++)
+        {
+            GameObject tmp = stuff[ii];
+            int rr = Random.Range(ii, stuff.Length);
+            stuff[ii] = stuff[rr];
+            stuff[rr] = tmp;
+        }
     }
 }

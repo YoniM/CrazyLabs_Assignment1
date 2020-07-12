@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
         vel = 0f;
         acce = vmax;
+        
     }
 
     void FixedUpdate()
@@ -47,7 +48,20 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(transform.rotation);
 
         if (Input.GetKeyDown("space"))
-            StopCar();
+            StopCar(0f);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        ObstacleScript obs;
+        obs = collision.gameObject.GetComponent<ObstacleScript>();
+        if (obs!=null)
+        {
+            StopCar(Mathf.Max((1 - obs.mass / rb.mass),0f));
+            HealthSystem.Instance.AddCrash();
+            obs.ObstableWasHit();
+        }
+        
     }
 
     private void AccelerateCar(float acceleration)
@@ -56,9 +70,9 @@ public class PlayerController : MonoBehaviour
         vel = Mathf.Min(vel, vmax);
     }
 
-    private void StopCar()
+    private void StopCar(float fac)
     {
-        vel = 0f;
+        vel = vel * fac;
     }
 
 }

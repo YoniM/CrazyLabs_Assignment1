@@ -45,6 +45,10 @@ public class AlchoholEffect : MonoBehaviour
         UpdateBeerText();
         actionTimeDelay += deltaTimeDelay;
         actionTimeDelay = Mathf.Min(actionTimeDelay, MaxActionTimeDelay);
+        if (beercount>=3)
+        {
+            ProfileManager.Instance.ChangeProfile(1);
+        }
     }
 
     void UpdateBeerText() { beertext.text = beercount.ToString(); }

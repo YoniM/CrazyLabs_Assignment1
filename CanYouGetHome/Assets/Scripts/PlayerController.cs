@@ -74,7 +74,6 @@ public class PlayerController : MonoBehaviour
         if (obs!=null)
         {
             StopCar(Mathf.Max((1 - obs.mass / rb.mass),0f));
-            Debug.Log(obs.crashable);
             if (obs.crashable)
                 HealthSystem.Instance.AddCrash();
 

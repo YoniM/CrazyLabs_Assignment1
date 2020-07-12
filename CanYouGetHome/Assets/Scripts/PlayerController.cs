@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     float rotation_factor, force_factor;
     private float moveX;
 
+    int BeerCount;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +28,9 @@ public class PlayerController : MonoBehaviour
 
         vel = 0f;
         acce = vmax;
-        
+
+        BeerCount = 0;
+
     }
 
     void FixedUpdate()
@@ -54,11 +58,21 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         ObstacleScript obs;
+        Beer beer;
         obs = collision.gameObject.GetComponent<ObstacleScript>();
+        beer = collision.gameObject.GetComponent<Beer>();
+
+        if (beer != null)
+        {
+            BeerCount++;
+        }
         if (obs!=null)
         {
             StopCar(Mathf.Max((1 - obs.mass / rb.mass),0f));
-            HealthSystem.Instance.AddCrash();
+            Debug.Log(obs.crashable);
+            if (obs.crashable)
+                HealthSystem.Instance.AddCrash();
+
             obs.ObstableWasHit();
         }
         

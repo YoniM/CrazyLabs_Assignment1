@@ -295,3 +295,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 100
+  crashable: 1
+  time_to_destruction: 0

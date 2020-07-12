@@ -5,11 +5,13 @@ using UnityEngine;
 public class ObstacleScript : MonoBehaviour
 {
     public float mass;
-
+    public bool crashable = false;
+    public float time_to_destruction = 0f;
 
     public void ObstableWasHit()
     {
-        Invoke("DestroyThisInstance", 1.0f);
+        if (!crashable)
+            Invoke("DestroyThisInstance", time_to_destruction);
     }
 
     void DestroyThisInstance()
@@ -18,7 +20,7 @@ public class ObstacleScript : MonoBehaviour
     }
     private void OnDestroy()
     {
-        Debug.LogError("Destroyed this sucker!");
+        
     }
 
 

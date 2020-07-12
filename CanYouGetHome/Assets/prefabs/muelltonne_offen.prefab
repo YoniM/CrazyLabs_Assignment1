@@ -76,6 +76,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 50
+  crashable: 0
+  time_to_destruction: 0.5
 --- !u!1 &4392163045196068836
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,3 +172,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 10
+  crashable: 0
+  time_to_destruction: 0

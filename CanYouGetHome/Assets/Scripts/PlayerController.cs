@@ -37,7 +37,8 @@ public class PlayerController : MonoBehaviour
     {
         moveX = Input.GetAxis("Horizontal");
         float force = force_factor * (vel * moveX) * Time.deltaTime;
-        rb.AddForce(force * transform.right);
+        float rotation = rotation_factor * vel * moveX * Time.deltaTime;
+        StartCoroutine(ApplyMovement(force,rotation, AlchoholEffect.Instance.ActionTimeDelay));
     }
 
     private void Update()
@@ -45,26 +46,31 @@ public class PlayerController : MonoBehaviour
         if (vel < vmax)
             AccelerateCar(acce);
 
-        //moveX = Input.GetAxis("Horizontal");
-        float rotation = rotation_factor * vel * moveX * Time.deltaTime;
-        transform.Rotate(0, rotation, 0);
         transform.position += transform.forward * vel * Time.deltaTime; // moving forward at speed of vel
-        //Debug.Log(transform.rotation);
 
         if (Input.GetKeyDown("space"))
             StopCar(0f);
     }
 
+    IEnumerator ApplyMovement(float force, float rotation, float timedelay)
+    {
+        yield return new WaitForSeconds(timedelay);
+        rb.AddForce(force * transform.right);
+        transform.Rotate(0, rotation, 0);
+    }
+
+
     private void OnCollisionEnter(Collision collision)
     {
         ObstacleScript obs;
-        Beer beer;
+        BeerScript beer;
         obs = collision.gameObject.GetComponent<ObstacleScript>();
-        beer = collision.gameObject.GetComponent<Beer>();
+        beer = collision.gameObject.GetComponent<BeerScript>();
 
         if (beer != null)
         {
             BeerCount++;
+            //AlchoholEffect.Instance.BeerUp();
         }
         if (obs!=null)
         {

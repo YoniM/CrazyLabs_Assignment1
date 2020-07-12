@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 23620442662916464}
   - component: {fileID: 64053229711866500}
   - component: {fileID: 8057429993211151647}
-  - component: {fileID: 119343574100566802}
+  - component: {fileID: 5009525802044590477}
   m_Layer: 0
   m_Name: soda can
   m_TagString: Untagged
@@ -112,7 +112,7 @@ MonoBehaviour:
   mass: 0
   crashable: 0
   time_to_destruction: 0
---- !u!114 &119343574100566802
+--- !u!114 &5009525802044590477
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1282870137230404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 783d904b3739a8c47afcd05ad28ca857, type: 3}
+  m_Script: {fileID: 11500000, guid: 337e9223765fede488bf2e9671d9258c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3558860963624702666

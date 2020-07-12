@@ -21,20 +21,26 @@ public class AlchoholEffect : MonoBehaviour
 
     private float actionTimeDelay;
     public float MaxActionTimeDelay = 0.45f;
+    public float deltaTimeDelay = 0.15f;
+
+    private int beercount;
 
     public float ActionTimeDelay { get { return actionTimeDelay; } }
-    
+    public float BeerCount { get { return beercount; } }
+
+
     // Start is called before the first frame update
     void Start()
     {
         actionTimeDelay = 0f;
+        beercount = 0;
     }
 
     public void BeerUp()
     {
-        actionTimeDelay += 0.15f;
+        beercount++;
+        actionTimeDelay += deltaTimeDelay;
         actionTimeDelay = Mathf.Min(actionTimeDelay, MaxActionTimeDelay);
     }
-
 
 }

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BeerScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float bouncing_amplitude = 1f; // [m]
+    public float bouncing_frequency = 2f; // [Hz]
+
     void Start()
     {
         
@@ -13,6 +15,6 @@ public class BeerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position += Vector3.up * bouncing_amplitude * Mathf.Cos(bouncing_frequency*Time.time) * Time.deltaTime;
     }
 }

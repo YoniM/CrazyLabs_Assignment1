@@ -69,8 +69,7 @@ public class PlayerController : MonoBehaviour
 
         if (beer != null)
         {
-            BeerCount++;
-            //AlchoholEffect.Instance.BeerUp();
+            AlchoholEffect.Instance.BeerUp();
         }
         if (obs!=null)
         {

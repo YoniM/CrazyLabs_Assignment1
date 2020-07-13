@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private float moveX;
 
     int BeerCount;
+    int prevmovedirection, movedirection;
+    float rnd;
 
     // Start is called before the first frame update
     void Start()
@@ -28,17 +30,19 @@ public class PlayerController : MonoBehaviour
 
         vel = 0f;
         acce = vmax;
-
-        BeerCount = 0;
-
+        acce = vmax;
     }
 
     void FixedUpdate()
     {
         moveX = Input.GetAxis("Horizontal");
-        float force = force_factor * (vel * moveX) * Time.deltaTime;
-        float rotation = rotation_factor * vel * moveX * Time.deltaTime;
-        StartCoroutine(ApplyMovement(force,rotation, AlchoholEffect.Instance.ActionTimeDelay));
+        if (moveX != 0)
+        {
+            
+            float force = force_factor * (vel * moveX) * Time.deltaTime;
+            float rotation = rotation_factor * vel * moveX * Time.deltaTime;
+            StartCoroutine(ApplyMovement(force, rotation, AlcoholEffect.Instance.ActionTimeDelay));
+        }
     }
 
     private void Update()
@@ -69,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
         if (beer != null)
         {
-            AlchoholEffect.Instance.BeerUp();
+            AlcoholEffect.Instance.BeerUp();
         }
         if (obs!=null)
         {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AlchoholEffect : MonoBehaviour
+public class AlcoholEffect : MonoBehaviour
 {
-    public static AlchoholEffect Instance { get; private set; }
+    public static AlcoholEffect Instance { get; private set; }
 
     private void Awake()
     {

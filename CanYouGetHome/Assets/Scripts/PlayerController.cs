@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
     public float vmax = 18f; // [m/sec]
     public float steering_streangth = 20f;
     private Rigidbody rb;
 
     private float vel; // [m/sec]
-    float acce; // [m/sec^2]
+    public float acce = 18f , dece = -18f; // [m/sec^2]
+    private bool Accelerate;
 
     float rotation_factor, force_factor;
     private float moveX;
@@ -29,36 +31,41 @@ public class PlayerController : MonoBehaviour
         force_factor = steering_streangth * 2.0f;
 
         vel = 0f;
-        acce = vmax;
-        acce = vmax;
+        //acce = vmax;
+        //dece = -acce;
     }
 
     void FixedUpdate()
     {
         moveX = Input.GetAxis("Horizontal");
-        if (moveX != 0)
+        Accelerate = Input.GetKey("space");
+        if (Accelerate || (moveX != 0))
         {
-            
             float force = force_factor * (vel * moveX) * Time.deltaTime;
             float rotation = rotation_factor * vel * moveX * Time.deltaTime;
-            StartCoroutine(ApplyMovement(force, rotation, AlcoholEffect.Instance.ActionTimeDelay));
+            StartCoroutine(ApplyMovement(force, rotation, Accelerate, AlcoholEffect.Instance.ActionTimeDelay));
         }
     }
 
     private void Update()
-    {
-        if (vel < vmax)
-            AccelerateCar(acce);
-
+    {       
         transform.position += transform.forward * vel * Time.deltaTime; // moving forward at speed of vel
 
-        if (Input.GetKeyDown("space"))
-            StopCar(0f);
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            HealthSystem.Instance.GameOver();
+        }
     }
 
-    IEnumerator ApplyMovement(float force, float rotation, float timedelay)
+    IEnumerator ApplyMovement(float force, float rotation, bool Accelerate, float timedelay)
     {
         yield return new WaitForSeconds(timedelay);
+
+        if ((Accelerate) && (vel < vmax))
+            AccelerateCar(acce);
+        else if (vel > 0)
+            AccelerateCar(dece);
+
         rb.AddForce(force * transform.right);
         transform.Rotate(0, rotation, 0);
     }
@@ -89,7 +96,7 @@ public class PlayerController : MonoBehaviour
     private void AccelerateCar(float acceleration)
     {
         vel += acceleration * Time.deltaTime;
-        vel = Mathf.Min(vel, vmax);
+        vel = Mathf.Max(Mathf.Min(vel, vmax),0);
     }
 
     private void StopCar(float fac)

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HealthSystem : MonoBehaviour
 {
     public static HealthSystem Instance { get; private set; }
-
+    
     private void Awake()
     {
         if (Instance == null)
@@ -20,6 +21,7 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
+    public Image RedScreen;
     public Image crash1 , crash2 , crash3;
     private int crashes;
     private int maxcrashes = 3;
@@ -29,6 +31,7 @@ public class HealthSystem : MonoBehaviour
 
 private void Start()
     {
+        RedScreen.gameObject.SetActive(false);
         crashes = 0;
         UpdateVisual();
     }
@@ -46,7 +49,7 @@ private void Start()
     public void AddCrash()
     {
         crashes++;
-        if (crashes > maxcrashes)
+        if (crashes >= maxcrashes)
         {
             GameOver();
         } else
@@ -57,7 +60,24 @@ private void Start()
 
     public void GameOver()
     {
-        Debug.LogError("GameOver");
+        RedScreen.gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Level1");
+    }
+
+    public void QuitGame()
+    {
+        #if UNITY_STANDALONE
+            Application.Quit();
+        #endif
+
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #endif
     }
 
 }

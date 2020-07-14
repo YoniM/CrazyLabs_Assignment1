@@ -5,7 +5,7 @@ using UnityEngine;
 public class BeerScript : MonoBehaviour
 {
     public float bouncing_amplitude = 1f; // [m]
-    public float bouncing_frequency = 20f; // [Hz]
+    public float bouncing_frequency = 50f; // [Hz]
 
     void Start()
     {

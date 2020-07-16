@@ -5,21 +5,7 @@ using UnityEngine.UI;
 
 public class AlcoholEffect : MonoBehaviour
 {
-    public static AlcoholEffect Instance { get; private set; }
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
+    
     private float actionTimeDelay;
     public float MaxActionTimeDelay = 0.45f;
     public float deltaTimeDelay = 0.15f;

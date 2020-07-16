@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    public HealthSystem healthsys;
+    public AlcoholEffect alcoholeff;
     public float vmax = 18f; // [m/sec]
     public float steering_streangth = 20f;
     private Rigidbody rb;
@@ -43,7 +44,7 @@ public class PlayerController : MonoBehaviour
         {
             float force = force_factor * (vel * moveX) * Time.deltaTime;
             float rotation = rotation_factor * vel * moveX * Time.deltaTime;
-            StartCoroutine(ApplyMovement(force, rotation, Accelerate, AlcoholEffect.Instance.ActionTimeDelay));
+            StartCoroutine(ApplyMovement(force, rotation, Accelerate, alcoholeff.ActionTimeDelay));
         }
     }
 
@@ -53,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Escape))
         {
-            HealthSystem.Instance.GameOver();
+            healthsys.GameOver();
         }
     }
 
@@ -80,13 +81,13 @@ public class PlayerController : MonoBehaviour
 
         if (beer != null)
         {
-            AlcoholEffect.Instance.BeerUp();
+            alcoholeff.BeerUp();
         }
         if (obs!=null)
         {
             StopCar(Mathf.Max((1 - obs.mass / rb.mass),0f));
             if (obs.crashable)
-                HealthSystem.Instance.AddCrash();
+                healthsys.AddCrash();
 
             obs.ObstableWasHit();
         }

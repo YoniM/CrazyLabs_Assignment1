@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     int prevmovedirection, movedirection;
     float rnd;
 
+    public SipScript SipSystem;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +71,8 @@ public class PlayerController : MonoBehaviour
 
         rb.AddForce(force * transform.right);
         transform.Rotate(0, rotation, 0);
+
+        SipSystem.ApplyForce(-force * transform.right);
     }
 
 
@@ -98,6 +102,7 @@ public class PlayerController : MonoBehaviour
     {
         vel += acceleration * Time.deltaTime;
         vel = Mathf.Max(Mathf.Min(vel, vmax),0);
+        SipSystem.ApplyForce(-acceleration * transform.forward);
     }
 
     private void StopCar(float fac)

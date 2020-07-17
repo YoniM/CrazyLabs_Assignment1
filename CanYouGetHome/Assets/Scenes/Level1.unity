@@ -787,8 +787,9 @@ GameObject:
   - component: {fileID: 173477177}
   - component: {fileID: 173477179}
   - component: {fileID: 173477178}
+  - component: {fileID: 173477180}
   m_Layer: 5
-  m_Name: Text
+  m_Name: AlcoholEffectText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -838,14 +839,14 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 42
-    m_Alignment: 4
+    m_MaxSize: 36
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 1
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: AlcoholEffect Text
+  m_Text: Alcohol Effect Text
 --- !u!222 &173477179
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -854,6 +855,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173477176}
   m_CullTransparentMesh: 0
+--- !u!114 &173477180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173477176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 376508f00c9cd764b8423df401b21361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time_present: 3
 --- !u!1001 &173867058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3571,9 +3585,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7c6f9c0194fe0448bbb6bca6d03bc12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maincamera: {fileID: 1956682483}
   MaxActionTimeDelay: 0.45
   deltaTimeDelay: 0.15
   beertext: {fileID: 686901614}
+  EffectText: {fileID: 173477180}
 --- !u!4 &1240449041
 Transform:
   m_ObjectHideFlags: 0
@@ -5469,6 +5485,7 @@ GameObject:
   - component: {fileID: 1956682480}
   - component: {fileID: 1956682479}
   - component: {fileID: 1956682482}
+  - component: {fileID: 1956682483}
   m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5601,6 +5618,22 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &1956682483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956682478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2f5bd29932e8f4438a3b6299e03fb60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maincamera: {fileID: 0}
+  taxing_time: 2
+  taxingspeed: 0.3
+  a: 0.2
 --- !u!1001 &2014992114
 PrefabInstance:
   m_ObjectHideFlags: 0

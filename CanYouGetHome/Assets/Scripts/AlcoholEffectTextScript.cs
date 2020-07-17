@@ -10,14 +10,16 @@ public class AlcoholEffectTextScript : MonoBehaviour
     {
         txt = GetComponent<Text>();
         gameObject.SetActive(false);
+        
     }
-    public void UpdateText(string str)
+    public void ShowText(string str)
     {
         txt.text = str;
-        Invoke("SetNotActive", time_present);
+        gameObject.SetActive(true);
+        Invoke("DontShowText", time_present);
     }
 
-    void SetNotActive()
+    void DontShowText()
     {
         gameObject.SetActive(false);
     }

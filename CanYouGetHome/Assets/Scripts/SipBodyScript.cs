@@ -5,15 +5,16 @@ using UnityEngine;
 public class SipBodyScript : MonoBehaviour
 {
     public AlcoholEffect alcoholeff;
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
         BeerIconScript beer;
-        beer = collision.gameObject.GetComponent<BeerIconScript>();
+        beer = other.gameObject.GetComponent<BeerIconScript>();
         
         if (beer != null)
         {
             alcoholeff.BeerUp();
-            beer.gameObject.SetActive(false);
+            other.gameObject.SetActive(false);
         }
     }
 }

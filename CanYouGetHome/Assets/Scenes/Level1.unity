@@ -3961,7 +3961,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9811321, g: 0.84839106, b: 0.5784977, a: 1}
   m_Intensity: 10
   m_Range: 3.669846
   m_SpotAngle: 59.695786
@@ -4046,8 +4046,6 @@ MonoBehaviour:
   body: {fileID: 719566730}
   center: {fileID: 1931876941}
   centeringforce: 10
-  BeerIcon_prefab: {fileID: 7942844989697187239, guid: b7fe54418c35ce54eb7e16d687488334,
-    type: 3}
 --- !u!64 &1681744623
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5767,6 +5765,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BeerIcon prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8850600733969868048, guid: b7fe54418c35ce54eb7e16d687488334,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7fe54418c35ce54eb7e16d687488334, type: 3}

@@ -7,7 +7,7 @@ public class SipScript : MonoBehaviour
     public Transform body;
     public Transform center;
     public float centeringforce = 1f;
-    public Transform BeerIcon_prefab;
+    //public Transform BeerIcon_prefab;
 
 
     Rigidbody rb;

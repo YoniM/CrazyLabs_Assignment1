@@ -36,25 +36,28 @@ public class AlcoholEffect : MonoBehaviour
         
         beercount++;
         UpdateBeerText();
-        actionTimeDelay += deltaTimeDelay;
-        actionTimeDelay = Mathf.Min(actionTimeDelay, MaxActionTimeDelay);
-        if (beercount >= 3 && !PresentedAtaxiaText)
+        if (beercount >= 1)
         {
             maincamera.IncreaseAtaxia();
-            EffectText.ShowText("Alcohol Onsets Ataxia");
-            PresentedAtaxiaText = true;
+            if (!PresentedAtaxiaText)
+            {
+                EffectText.ShowText("Alcohol Onsets Ataxia");
+                PresentedAtaxiaText = true;
+            }
         }
 
-        if (beercount >= 2 && !PresentedResponseDelayText)
+        if (beercount >= 2)
         {
-            EffectText.ShowText("Alcohol Slows your Response Time");
-            PresentedResponseDelayText = true;
+            actionTimeDelay += deltaTimeDelay;
+            actionTimeDelay = Mathf.Min(actionTimeDelay, MaxActionTimeDelay);
+            if (!PresentedResponseDelayText)
+            {
+                EffectText.ShowText("Alcohol Slows your Response Time");
+                PresentedResponseDelayText = true;
+            }
         }
         if (beercount >= 4 && !PresentedBlurText)
             AddBlur();
-
-
-
     }
 
     void AddBlur()

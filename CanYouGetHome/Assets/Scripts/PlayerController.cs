@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Light main_directional_light;
     public HealthSystem healthsys;
     public AlcoholEffect alcoholeff;
     public float vmax = 18f; // [m/sec]
@@ -26,9 +27,12 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+        //main_directional_light.intensity = 0.05f;
+        //RenderSettings.fog = true;
+
         rb = GetComponent<Rigidbody>();
-        //Color fullDark = new Color(32.0f / 255.0f, 28.0f / 255.0f, 46.0f / 255.0f);
-        //RenderSettings.ambientLight = fullDark;
+        
         //rb.velocity = transform.forward * v0;
         rotation_factor = steering_streangth * 0.1f;
         force_factor = steering_streangth * 2.0f;
@@ -64,11 +68,15 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(timedelay);
 
-        if ((Accelerate) && (vel < vmax))
-            AccelerateCar(acce);
+        if (Accelerate)
+        {
+            if (vel < vmax)
+                AccelerateCar(acce);
+        }
         else if (vel > 0)
+        {
             AccelerateCar(dece);
-
+        }
         rb.AddForce(force * transform.right);
         transform.Rotate(0, rotation, 0);
 

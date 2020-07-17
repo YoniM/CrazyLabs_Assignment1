@@ -16,6 +16,7 @@ public class AlcoholEffect : MonoBehaviour
     public float ActionTimeDelay { get { return actionTimeDelay; } }
     public float BeerCount { get { return beercount; } }
 
+    public AlcoholEffectTextScript EffectText;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,7 @@ public class AlcoholEffect : MonoBehaviour
         if (beercount>=3)
         {
             ProfileManager.Instance.ChangeProfile(1);
+            EffectText.UpdateText("Alcohol Blurs Your Vision");
         }
     }
 

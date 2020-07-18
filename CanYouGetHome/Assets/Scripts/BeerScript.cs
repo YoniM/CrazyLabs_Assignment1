@@ -6,7 +6,7 @@ public class BeerScript : MonoBehaviour
 {
     public float bouncing_amplitude = 1f; // [m]
     public float bouncing_frequency = 50f; // [Hz]
-
+    public bool Animate = false;
     void Start()
     {
         
@@ -15,6 +15,9 @@ public class BeerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.up * bouncing_amplitude * Mathf.Cos(bouncing_frequency*Time.time) * Time.deltaTime;
+        if (Animate)
+        {
+            transform.position += Vector3.up * bouncing_amplitude * Mathf.Cos(bouncing_frequency * Time.time) * Time.deltaTime;
+        }
     }
 }

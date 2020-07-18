@@ -22,12 +22,26 @@ public class ProfileManager : MonoBehaviour
 
     public PostProcessProfile[] profiles;
     PostProcessVolume postvol;
+    //DepthOfField blur;
 
     void Start()
     {
         postvol = GetComponent<PostProcessVolume>();
+        //blur = GetComponent<DepthOfField>();
+        //blur = ScriptableObject.CreateInstance<DepthOfField>();
+
+    }
+    /*
+    public void AddBlur()
+    {
+        blur.focalLength.value *= 2f; 
     }
 
+    public float GetBlur()
+    {
+        return blur.focalLength.value;
+    }
+    */
     public void ChangeProfile(int profile_number)
     {
         postvol.profile = profiles[profile_number];

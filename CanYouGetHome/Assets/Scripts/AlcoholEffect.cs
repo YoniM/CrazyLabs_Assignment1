@@ -19,7 +19,7 @@ public class AlcoholEffect : MonoBehaviour
     public float BeerCount { get { return beercount; } }
 
     public AlcoholEffectTextScript EffectText;
-    bool PresentedBlurText, PresentedResponseDelayText, PresentedAtaxiaText;
+    bool PresentedBlurText, PresentedResponseDelayText, PresentedAtaxiaText, PresentedNarrowVisionText;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +29,8 @@ public class AlcoholEffect : MonoBehaviour
         UpdateBeerText();
         PresentedBlurText = false;
         PresentedResponseDelayText = false;
+        PresentedAtaxiaText = false;
+        PresentedNarrowVisionText = false;
     }
 
     public void BeerUp()
@@ -36,13 +38,23 @@ public class AlcoholEffect : MonoBehaviour
         
         beercount++;
         UpdateBeerText();
-        if (beercount >= 1)
+        if (beercount >= 1) //3
         {
             maincamera.IncreaseAtaxia();
             if (!PresentedAtaxiaText)
             {
                 EffectText.ShowText("Alcohol Onsets Ataxia");
                 PresentedAtaxiaText = true;
+            }
+        }
+
+        if (beercount >= 4)
+        {
+            maincamera.DecreaseFieldVision();
+            if (!PresentedNarrowVisionText)
+            {
+                EffectText.ShowText("Alcohol narrows your field of vision");
+                PresentedNarrowVisionText = true;
             }
         }
 
@@ -56,15 +68,20 @@ public class AlcoholEffect : MonoBehaviour
                 PresentedResponseDelayText = true;
             }
         }
-        if (beercount >= 4 && !PresentedBlurText)
+        if (beercount >= 5 && !PresentedBlurText)
             AddBlur();
     }
 
     void AddBlur()
     {
         ProfileManager.Instance.ChangeProfile(1);
-        EffectText.ShowText("Alcohol Blurs Your Vision");
-        PresentedBlurText = true;
+        //ProfileManager.Instance.AddBlur();
+        //if (ProfileManager.Instance.GetBlur()>20f)
+        //{
+            EffectText.ShowText("Alcohol Blurs Your Vision");
+            PresentedBlurText = true;
+        //}
+        
     }
     void UpdateBeerText() { beertext.text = beercount.ToString(); }
 

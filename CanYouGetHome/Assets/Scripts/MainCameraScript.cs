@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MainCameraScript : MonoBehaviour
 {
+    Camera cam;
     float ataxia_rate, delta_ataxia;
     bool taxing, finishtaxing;
     float t0;
@@ -11,11 +12,14 @@ public class MainCameraScript : MonoBehaviour
     public float taxingspeed = 0.05f;
     public float a = 0.2f; // taxingmagnitude
     Vector3 targetDirection, deltadirection;
+
+    public float NarrowingViewFactor = 0.9f;
     public Transform car;
 
     // Start is called before the first frame update
     void Start()
     {
+        cam = GetComponent<Camera>();
         taxing = false;
         finishtaxing = false;
         ataxia_rate = 0f;
@@ -31,7 +35,6 @@ public class MainCameraScript : MonoBehaviour
         {
             if (Random.Range(0f, 1f) < ataxia_rate)
             {
-                Debug.Log("Starting");
                 taxing = true; finishtaxing = false;
                 t0 = Time.time;
                 targetDirection = transform.forward + new Vector3(Random.Range(-a, a), Random.Range(-a, a), Random.Range(-a, a));
@@ -43,7 +46,6 @@ public class MainCameraScript : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(newDirection);
             if (Time.time > t0 + taxing_time)
             {
-                Debug.Log("Finishing");
                 finishtaxing = true; taxing = false;
                 t0 = Time.time;
             }
@@ -51,11 +53,10 @@ public class MainCameraScript : MonoBehaviour
         }
         if (finishtaxing && !taxing)
         {
-            Vector3 newDirection2 = Vector3.RotateTowards(transform.forward, car.forward, 10f * taxingspeed * Time.deltaTime, 0.0f);
+            Vector3 newDirection2 = Vector3.RotateTowards(transform.forward, car.forward + deltadirection, taxingspeed * Time.deltaTime, 0.0f);
             transform.rotation = Quaternion.LookRotation(newDirection2);
-            if (Time.time > t0 + taxing_time * 2)
+            if (Time.time > t0 + taxing_time)
             {
-                Debug.Log(car.forward + deltadirection);
                 finishtaxing = false; taxing = false;
                 t0 = Time.time;
             }
@@ -68,5 +69,10 @@ public class MainCameraScript : MonoBehaviour
         taxing_time += 0.1f;
         taxingspeed += 0.02f;
         a += 0.02f;
+    }
+
+    public void DecreaseFieldVision()
+    {
+        //cam.fieldOfView *= NarrowingViewFactor;
     }
 }

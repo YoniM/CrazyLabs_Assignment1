@@ -71,8 +71,4 @@ public class MainCameraScript : MonoBehaviour
         a += 0.02f;
     }
 
-    public void DecreaseFieldVision()
-    {
-        //cam.fieldOfView *= NarrowingViewFactor;
-    }
 }

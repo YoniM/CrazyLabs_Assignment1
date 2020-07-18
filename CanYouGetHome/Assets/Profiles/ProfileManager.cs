@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
+
 public class ProfileManager : MonoBehaviour
 {
     public static ProfileManager Instance { get; private set; }
@@ -22,31 +23,17 @@ public class ProfileManager : MonoBehaviour
 
     public PostProcessProfile[] profiles;
     PostProcessVolume postvol;
-    //DepthOfField blur;
+    //DepthOfField blurlayer = null;
+    //Vignette vignetteLayer = null;
 
     void Start()
     {
-        postvol = GetComponent<PostProcessVolume>();
-        //blur = GetComponent<DepthOfField>();
-        //blur = ScriptableObject.CreateInstance<DepthOfField>();
-
+        postvol = GetComponent<PostProcessVolume>();    
     }
-    /*
-    public void AddBlur()
-    {
-        blur.focalLength.value *= 2f; 
-    }
-
-    public float GetBlur()
-    {
-        return blur.focalLength.value;
-    }
-    */
+    
     public void ChangeProfile(int profile_number)
     {
         postvol.profile = profiles[profile_number];
     }
 
-
-    
 }

@@ -8,6 +8,7 @@ public class HealthSystem : MonoBehaviour
 {
 
     public Image RedScreen;
+    public Image WinScreen;
     public Image crash1 , crash2 , crash3;
     private int crashes;
     private int maxcrashes = 3;
@@ -47,6 +48,12 @@ private void Start()
     public void GameOver()
     {
         RedScreen.gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void WonGame()
+    {
+        WinScreen.gameObject.SetActive(true);
         Time.timeScale = 0;
     }
 

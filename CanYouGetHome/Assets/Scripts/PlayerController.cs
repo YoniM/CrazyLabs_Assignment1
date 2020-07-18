@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public AlcoholEffect alcoholeff;
     public float vmax = 18f; // [m/sec]
     public float steering_streangth = 20f;
+    public Transform WinArea;
     private Rigidbody rb;
 
     private float vel; // [m/sec]
@@ -88,9 +89,10 @@ public class PlayerController : MonoBehaviour
     {
         ObstacleScript obs;
         BeerScript beer;
+        
         obs = collision.gameObject.GetComponent<ObstacleScript>();
         beer = collision.gameObject.GetComponent<BeerScript>();
-
+        
         if (beer != null)
         {
             alcoholeff.BeerUp();

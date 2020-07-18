@@ -19,7 +19,7 @@ public class AlcoholEffect : MonoBehaviour
     public int WhenMotionDelay = 1, WhenAtaxia = 2, WhenBlur = 3, WhenNarrowingVision = 4;
 
     public float ActionTimeDelay { get { return actionTimeDelay; } }
-    public float BeerCount { get { return beercount; } }
+    public int BeerCount() {  return beercount;  }
 
     public AlcoholEffectTextScript EffectText;
     

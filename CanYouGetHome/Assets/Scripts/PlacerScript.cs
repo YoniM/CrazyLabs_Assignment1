@@ -28,7 +28,7 @@ public class PlacerScript : MonoBehaviour
         int N = (int)(density * (xmax - xmin) * (zmax - zmin));
         for (int ii = 0; ii < N; ii++)
         {
-            clone = Instantiate(obj_prefab, new Vector3(Random.Range(xmin, xmax), obj_prefab.position.y, Random.Range(zmin, zmax)), obj_prefab.rotation, transform);
+            clone = Instantiate(obj_prefab, transform.position + new Vector3(Random.Range(xmin, xmax), obj_prefab.position.y, Random.Range(zmin, zmax)), obj_prefab.rotation, transform);
             clone.localScale = clone.localScale * (1 + RandomScaleFactor * Random.Range(-1f,1f));
             if (Random.Range(0f, 1f) < probRandomRotation)
                 clone.Rotate(new Vector3(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f)));

@@ -99,7 +99,8 @@ public class PlayerController : MonoBehaviour
         {
             StopCar(Mathf.Max((1 - obs.mass / rb.mass),0f));
             if (obs.crashable)
-                healthsys.AddCrash();
+                //healthsys.AddCrash();
+                healthsys.GameOver();
 
             obs.ObstableWasHit();
         }

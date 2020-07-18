@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         
-        main_directional_light.intensity = 0.05f;
+        main_directional_light.intensity = 0.02f;
         RenderSettings.fog = true;
 
         rb = GetComponent<Rigidbody>();

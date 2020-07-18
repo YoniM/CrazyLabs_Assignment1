@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ObstacleScript : MonoBehaviour
 {
-    public float mass;
-    public bool crashable = false;
+    public float mass = 100f;
+    public bool crashable = true;
     public float time_to_destruction = 0f;
 
     public void ObstableWasHit()

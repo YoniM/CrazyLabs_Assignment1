@@ -9,6 +9,7 @@ public class PlacerScript : MonoBehaviour
     public float xmin, xmax, zmin, zmax;
     public float RandomScaleFactor = 0.3f;
     //public bool RandomRotationX, RandomRotationY, RandomRotationZ;
+    public float probRandomRotation = 0f; 
 
     private void Start()
     {
@@ -29,6 +30,8 @@ public class PlacerScript : MonoBehaviour
         {
             clone = Instantiate(obj_prefab, new Vector3(Random.Range(xmin, xmax), obj_prefab.position.y, Random.Range(zmin, zmax)), obj_prefab.rotation, transform);
             clone.localScale = clone.localScale * (1 + RandomScaleFactor * Random.Range(-1f,1f));
+            if (Random.Range(0f, 1f) < probRandomRotation)
+                clone.Rotate(new Vector3(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f)));
             clone.gameObject.SetActive(true);
         }
 

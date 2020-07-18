@@ -22,18 +22,13 @@ public class AlcoholEffect : MonoBehaviour
     public float BeerCount { get { return beercount; } }
 
     public AlcoholEffectTextScript EffectText;
-    bool PresentedBlurText, PresentedResponseDelayText, PresentedAtaxiaText, PresentedNarrowVisionText;
-
+    
     // Start is called before the first frame update
     void Start()
     {
         actionTimeDelay = 0f;
         beercount = 0;
         UpdateBeerText();
-        PresentedBlurText = false;
-        PresentedResponseDelayText = false;
-        PresentedAtaxiaText = false;
-        PresentedNarrowVisionText = false;
         alcoholeffectcount = 0;
     }
 

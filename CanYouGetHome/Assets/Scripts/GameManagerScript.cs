@@ -22,18 +22,21 @@ public class GameManagerScript : MonoBehaviour
         }
     }
 
-    public GameObject storytext;
-    public Transform ButtonsPanel;
+    public GameObject StoryText;
+    public GameObject ButtonsPanel;
+    public GameObject SettingsPanel;
+
+    public void Start()
+    {
+        SettingsPanel.SetActive(false);
+    }
     public void OpenSettingsPanel()
     {
-        storytext.SetActive(false);
+        StoryText.SetActive(false);
+        ButtonsPanel.SetActive(false);
+        SettingsPanel.SetActive(true);
 
-        foreach (Transform child in ButtonsPanel)
-        {
-            child.gameObject.SetActive(false);
-        }
-        ButtonsPanel.gameObject.SetActive(false);
-        //SceneManager.LoadScene("SettingsPanel");
+
     }
 
     public void RestartGame()

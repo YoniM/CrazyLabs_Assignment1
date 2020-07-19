@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManagerScript : MonoBehaviour
 {
 
+    #region Singleton Setup
     public static GameManagerScript Instance { get; private set; }
 
     private void Awake()
@@ -21,8 +22,8 @@ public class GameManagerScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    #endregion Singleton Setup
 
-    
     public GameObject StoryText;
     public GameObject ButtonsPanel;
     public GameObject SettingsPanel;

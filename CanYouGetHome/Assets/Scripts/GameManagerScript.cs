@@ -22,12 +22,15 @@ public class GameManagerScript : MonoBehaviour
         }
     }
 
+    #region Panel Interfaces
     public GameObject StoryText;
     public GameObject ButtonsPanel;
     public GameObject SettingsPanel;
 
     public void Start()
     {
+        StoryText.SetActive(true);
+        ButtonsPanel.SetActive(true);
         SettingsPanel.SetActive(false);
     }
     public void OpenSettingsPanel()
@@ -35,9 +38,25 @@ public class GameManagerScript : MonoBehaviour
         StoryText.SetActive(false);
         ButtonsPanel.SetActive(false);
         SettingsPanel.SetActive(true);
-
-
     }
+
+    public void CloseSettingsPanel()
+    {
+        StoryText.SetActive(true);
+        ButtonsPanel.SetActive(true);
+        SettingsPanel.SetActive(false);
+    }
+    #endregion Panel Interfaces
+
+    #region Atributes
+    public Slider SteeringSlider;
+    public float SteeringFactor;
+    public void SetSteeringFactor()
+    {
+        SteeringFactor = SteeringSlider.value;
+    }
+    //public void SetSteeringFactor;
+    #endregion Atributes
 
     public void RestartGame()
     {

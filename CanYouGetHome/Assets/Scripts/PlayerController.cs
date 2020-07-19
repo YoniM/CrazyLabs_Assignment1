@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public LevelManagerScript levelmanager;
     public AlcoholEffect alcoholeff;
     public float vmax = 18f; // [m/sec]
-    public float steering_streangth = 20f;
+    public float steering_streangth = 30f;
     public Transform WinArea;
     private Rigidbody rb;
 
@@ -31,8 +31,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         
         //rb.velocity = transform.forward * v0;
-        rotation_factor = steering_streangth * 0.1f;
-        force_factor = steering_streangth * 2.0f;
+        rotation_factor = steering_streangth * 0.1f * GameManagerScript.Instance.SteeringFactor;
+        force_factor = steering_streangth * 2.0f * GameManagerScript.Instance.SteeringFactor;
 
         vel = 0f;
         //vmax = vmax0;

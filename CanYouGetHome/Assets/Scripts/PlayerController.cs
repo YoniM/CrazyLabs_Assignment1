@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Light main_directional_light;
-    public HealthSystem healthsys;
+    //public HealthSystem healthsys;
+    public LevelManagerScript levelmanager;
     public AlcoholEffect alcoholeff;
     public float vmax = 18f; // [m/sec]
     public float steering_streangth = 20f;
@@ -61,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Escape))
         {
-            healthsys.GameOver();
+            levelmanager.GameOver();
         }
     }
 
@@ -102,7 +103,7 @@ public class PlayerController : MonoBehaviour
             StopCar(Mathf.Max((1 - obs.mass / rb.mass),0f));
             if (obs.crashable)
                 //healthsys.AddCrash();
-                healthsys.GameOver();
+                levelmanager.GameOver();
 
             obs.ObstableWasHit();
         }

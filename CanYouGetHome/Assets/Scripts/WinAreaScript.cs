@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class WinAreaScript : MonoBehaviour
 {
-    public HealthSystem healthsys;
+    public LevelManagerScript levelmanager;
     public Text txt;
     public AlcoholEffect alcoholeffect;
 
@@ -15,7 +15,7 @@ public class WinAreaScript : MonoBehaviour
 
         if (player != null)
         {
-            healthsys.WonGame();
+            levelmanager.WonGame();
             txt.text = "Drank " + alcoholeffect.BeerCount().ToString() + " Beers";
         }
     }

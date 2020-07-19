@@ -9,7 +9,13 @@ public class LevelManagerScript : MonoBehaviour
 {
     public Image CrashScreen;
     public Image WinScreen;
+    public Light main_directional_light;
 
+    private void Start()
+    {
+        main_directional_light.intensity = 0.02f;
+        RenderSettings.fog = true;
+    }
     public void GameOver()
     {
         CrashScreen.gameObject.SetActive(true);

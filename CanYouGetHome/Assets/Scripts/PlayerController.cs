@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Light main_directional_light;
     //public HealthSystem healthsys;
     public LevelManagerScript levelmanager;
     public AlcoholEffect alcoholeff;
@@ -26,13 +25,9 @@ public class PlayerController : MonoBehaviour
 
     //public SipScript SipSystem;
 
-    // Start is called before the first frame update
     void Start()
     {
         
-        main_directional_light.intensity = 0.02f;
-        RenderSettings.fog = true;
-
         rb = GetComponent<Rigidbody>();
         
         //rb.velocity = transform.forward * v0;
@@ -40,8 +35,7 @@ public class PlayerController : MonoBehaviour
         force_factor = steering_streangth * 2.0f;
 
         vel = 0f;
-        //acce = vmax;
-        //dece = -acce;
+        //vmax = vmax0;
     }
 
     void FixedUpdate()
@@ -72,8 +66,10 @@ public class PlayerController : MonoBehaviour
 
         if (Accelerate)
         {
-            if (vel < vmax)
+            if (vel <= vmax)
                 AccelerateCar(acce);
+            else
+                AccelerateCar(dece);
         }
         else if (vel > 0)
         {
@@ -90,10 +86,19 @@ public class PlayerController : MonoBehaviour
     {
         ObstacleScript obs;
         BeerScript beer;
+        //StreetScript street;
         
         obs = collision.gameObject.GetComponent<ObstacleScript>();
         beer = collision.gameObject.GetComponent<BeerScript>();
-        
+
+        /*
+        street = collision.gameObject.GetComponent<StreetScript>();
+        if (street != null)
+            vmax = vmax0 * street.IncreasedVelocityFactor;
+        else
+            vmax = vmax0;
+        */
+
         if (beer != null)
         {
             alcoholeff.BeerUp();

@@ -30,18 +30,12 @@ public class LevelManagerScript : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("Level1");
+        GameManagerScript.Instance.RestartGame();
     }
 
     public void QuitGame()
     {
-        #if UNITY_STANDALONE
-                Application.Quit();
-        #endif
-
-        #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-        #endif
+        GameManagerScript.Instance.QuitGame();
     }
 
 }

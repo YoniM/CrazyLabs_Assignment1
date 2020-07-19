@@ -22,17 +22,28 @@ public class GameManagerScript : MonoBehaviour
         }
     }
 
-    #region Panel Interfaces
+    
     public GameObject StoryText;
     public GameObject ButtonsPanel;
     public GameObject SettingsPanel;
 
-    public void Start()
+    public Slider SteeringSlider;
+    public float SteeringFactor = 1f;
+
+    public Slider SpeedSlider;
+    public float SpeedFactor = 1f;
+
+    private void Start()
     {
         StoryText.SetActive(true);
         ButtonsPanel.SetActive(true);
         SettingsPanel.SetActive(false);
+
+        SteeringSlider.value = SteeringFactor;
+        SpeedSlider.value = SpeedFactor;
     }
+
+    #region Panel Interfaces
     public void OpenSettingsPanel()
     {
         StoryText.SetActive(false);
@@ -48,19 +59,21 @@ public class GameManagerScript : MonoBehaviour
     }
     #endregion Panel Interfaces
 
+
     #region Atributes
-    public Slider SteeringSlider;
-    public float SteeringFactor;
-    public void SetSteeringFactor()
-    {
-        SteeringFactor = SteeringSlider.value;
-    }
-    //public void SetSteeringFactor;
+    public void SetSteeringFactor() { SteeringFactor = SteeringSlider.value; }
+    public void SetSpeedFactor() { SpeedFactor = SpeedSlider.value; }
+
     #endregion Atributes
 
-    public void RestartGame()
+    public void LoadLevel1()
     {
         SceneManager.LoadScene("Level1");
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("StartScreen");
+        Start();
     }
 
     public void QuitGame()

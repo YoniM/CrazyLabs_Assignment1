@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
 
     public float SteeringFactor = 1f;
     public float SpeedFactor = 1f;
+    public float BeerDensityMultiplier = 1f;
+    public float ObstacleDensityMultiplier = 1f;
 
     public void LoadLevel1()
     {

@@ -42,6 +42,8 @@ public class Level0Manager : MonoBehaviour
     #region Atributes
     public void SetSteeringFactor() { GameManager.Instance.SteeringFactor = SteeringSlider.value; }
     public void SetSpeedFactor() { GameManager.Instance.SpeedFactor = SpeedSlider.value; }
+    public void SetBeerDensityMultiplier() { GameManager.Instance.BeerDensityMultiplier = SpeedSlider.value; }
+    public void SetObstacleDensityMultiplier() { GameManager.Instance.ObstacleDensityMultiplier = SpeedSlider.value; }
 
     #endregion Atributes
 

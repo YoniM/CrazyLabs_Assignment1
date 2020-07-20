@@ -24,6 +24,13 @@ public class PlacerScript : MonoBehaviour
             zmax = zmin; zmin = temp;
         }
 
+        BeerScript beer;
+        beer = obj_prefab.GetComponent<BeerScript>();
+        if (beer != null)
+        {
+            density *= GameManager.Instance.BeerDensityMultiplier;
+        }
+
         Transform clone;
         int N = (int)(density * (xmax - xmin) * (zmax - zmin));
         for (int ii = 0; ii < N; ii++)

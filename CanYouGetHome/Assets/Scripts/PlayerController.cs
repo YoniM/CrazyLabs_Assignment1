@@ -51,9 +51,8 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Update()
-    {       
+    {
         transform.position += transform.forward * vel * Time.deltaTime; // moving forward at speed of vel
-        
     }
 
     IEnumerator ApplyMovement(float force, float rotation, bool Accelerate, float timedelay)

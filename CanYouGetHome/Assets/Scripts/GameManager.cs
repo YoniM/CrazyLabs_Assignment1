@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
     public void LoadLevel1()
     {
         SceneManager.LoadScene("Level1");
-        ProfileManager.Instance.ChangeProfile(0);
     }
     public void RestartGame()
     {

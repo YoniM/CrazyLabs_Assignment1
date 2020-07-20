@@ -20,4 +20,10 @@ public class BeerScript : MonoBehaviour
             transform.position += Vector3.up * bouncing_amplitude * Mathf.Cos(bouncing_frequency * Time.time) * Time.deltaTime;
         }
     }
+
+    public void DestroyThisInstance()
+    {
+        Destroy(this.gameObject);
+    }
+
 }

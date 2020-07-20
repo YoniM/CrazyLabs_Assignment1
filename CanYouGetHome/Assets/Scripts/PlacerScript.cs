@@ -27,9 +27,13 @@ public class PlacerScript : MonoBehaviour
         BeerScript beer;
         beer = obj_prefab.GetComponent<BeerScript>();
         if (beer != null)
-        {
             density *= GameManager.Instance.BeerDensityMultiplier;
-        }
+
+        ObstacleScript obs;
+        obs = obj_prefab.GetComponent<ObstacleScript>();
+        if (obs!= null)
+            density *= GameManager.Instance.ObstacleDensityMultiplier;
+
 
         Transform clone;
         int N = (int)(density * (xmax - xmin) * (zmax - zmin));

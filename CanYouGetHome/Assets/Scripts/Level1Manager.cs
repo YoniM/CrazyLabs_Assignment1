@@ -16,6 +16,13 @@ public class Level1Manager : MonoBehaviour
         main_directional_light.intensity = 0.02f;
         RenderSettings.fog = true;
     }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+            GameOver();
+    }
+
     public void GameOver()
     {
         CrashScreen.gameObject.SetActive(true);

@@ -54,10 +54,6 @@ public class PlayerController : MonoBehaviour
     {       
         transform.position += transform.forward * vel * Time.deltaTime; // moving forward at speed of vel
         
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            levelmanager.GameOver();
-        }
     }
 
     IEnumerator ApplyMovement(float force, float rotation, bool Accelerate, float timedelay)
@@ -102,6 +98,7 @@ public class PlayerController : MonoBehaviour
         if (beer != null)
         {
             alcoholeff.BeerUp();
+            beer.DestroyThisInstance();
         }
         if (obs!=null)
         {

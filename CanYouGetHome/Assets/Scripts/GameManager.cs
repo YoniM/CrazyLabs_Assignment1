@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     #endregion Singleton Setup
 
     public float SteeringFactor = 1f;
@@ -32,10 +33,12 @@ public class GameManager : MonoBehaviour
     public void LoadLevel1()
     {
         SceneManager.LoadScene("Level1");
+        ProfileManager.Instance.ChangeProfile(0);
     }
     public void RestartGame()
     {
         SceneManager.LoadScene("StartScreen");
+        //ProfileManager.Instance.ChangeProfile(0);
     }
 
     public void QuitGame()
@@ -48,4 +51,6 @@ public class GameManager : MonoBehaviour
             UnityEditor.EditorApplication.isPlaying = false;
         #endif
     }
+
+
 }

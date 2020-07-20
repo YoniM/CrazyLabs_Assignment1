@@ -11,6 +11,8 @@ public class Level0Manager : MonoBehaviour
 
     public Slider SteeringSlider;
     public Slider SpeedSlider;
+    public Slider BeersSlider;
+    public Slider ObstaclesSlider;
 
     private void Start()
     {
@@ -20,6 +22,14 @@ public class Level0Manager : MonoBehaviour
 
         SteeringSlider.value = GameManager.Instance.SteeringFactor;
         SpeedSlider.value = GameManager.Instance.SpeedFactor;
+        BeersSlider.value = GameManager.Instance.BeerDensityMultiplier;
+        ObstaclesSlider.value = GameManager.Instance.ObstacleDensityMultiplier;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+            CloseSettingsPanel();
     }
 
     #region Panel Interfaces
@@ -42,8 +52,8 @@ public class Level0Manager : MonoBehaviour
     #region Atributes
     public void SetSteeringFactor() { GameManager.Instance.SteeringFactor = SteeringSlider.value; }
     public void SetSpeedFactor() { GameManager.Instance.SpeedFactor = SpeedSlider.value; }
-    public void SetBeerDensityMultiplier() { GameManager.Instance.BeerDensityMultiplier = SpeedSlider.value; }
-    public void SetObstacleDensityMultiplier() { GameManager.Instance.ObstacleDensityMultiplier = SpeedSlider.value; }
+    public void SetBeerDensityMultiplier() { GameManager.Instance.BeerDensityMultiplier = BeersSlider.value; }
+    public void SetObstacleDensityMultiplier() { GameManager.Instance.ObstacleDensityMultiplier = ObstaclesSlider.value; }
 
     #endregion Atributes
 

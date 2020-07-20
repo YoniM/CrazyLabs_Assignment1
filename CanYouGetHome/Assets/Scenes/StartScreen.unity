@@ -267,10 +267,10 @@ RectTransform:
   m_Father: {fileID: 452698626}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.03, y: 0.29224253}
-  m_AnchorMax: {x: 0.56, y: 0.40770078}
-  m_AnchoredPosition: {x: 0, y: -169}
-  m_SizeDelta: {x: 0.0000076293945, y: -1}
+  m_AnchorMin: {x: 0.03, y: 0.12479547}
+  m_AnchorMax: {x: 0.56, y: 0.22970077}
+  m_AnchoredPosition: {x: 0, y: -1.2999878}
+  m_SizeDelta: {x: 0.0000076293945, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &250656363
 MonoBehaviour:
@@ -487,6 +487,8 @@ MonoBehaviour:
   SettingsPanel: {fileID: 452698625}
   SteeringSlider: {fileID: 841991312}
   SpeedSlider: {fileID: 1890022363}
+  BeersSlider: {fileID: 1285128217}
+  ObstaclesSlider: {fileID: 1039623804}
 --- !u!1 &366342610
 GameObject:
   m_ObjectHideFlags: 0

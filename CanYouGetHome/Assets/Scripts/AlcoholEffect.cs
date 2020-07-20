@@ -22,7 +22,7 @@ public class AlcoholEffect : MonoBehaviour
     public int BeerCount() {  return beercount;  }
 
     public AlcoholEffectTextScript EffectText;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +34,6 @@ public class AlcoholEffect : MonoBehaviour
 
     public void BeerUp()
     {
-        
         beercount++;
         UpdateBeerText();
 
@@ -57,7 +56,6 @@ public class AlcoholEffect : MonoBehaviour
                 ProfileManager.Instance.ChangeProfile(2);
                 EffectText.ShowText("Alcohol narrows your field of vision");
             }
-
         }
 
         #region Incremental increase of effects 
@@ -71,12 +69,8 @@ public class AlcoholEffect : MonoBehaviour
             maincamera.IncreaseAtaxia();
         }
         #endregion Incremental increase of effects
-
-        
     }
 
-        
-    
     void UpdateBeerText() { beertext.text = beercount.ToString(); }
 
 }

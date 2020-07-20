@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 33219226506758486}
   - component: {fileID: 23620442662916464}
   - component: {fileID: 64053229711866500}
-  - component: {fileID: 8057429993211151647}
   - component: {fileID: 5009525802044590477}
   m_Layer: 0
   m_Name: soda can
@@ -97,21 +96,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 4dd9463162913354e8d317ec0880afe1, type: 3}
---- !u!114 &8057429993211151647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1282870137230404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aac39a572d2df15488e9371f51530789, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mass: 0
-  crashable: 0
-  time_to_destruction: 0
 --- !u!114 &5009525802044590477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337e9223765fede488bf2e9671d9258c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bouncing_amplitude: 1
+  bouncing_frequency: 50
+  Animate: 0
 --- !u!1 &3558860963624702666
 GameObject:
   m_ObjectHideFlags: 0

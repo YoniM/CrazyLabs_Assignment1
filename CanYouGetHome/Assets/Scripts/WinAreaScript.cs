@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class WinAreaScript : MonoBehaviour
 {
-    public LevelManagerScript levelmanager;
+    public Level1Manager levelmanager;
     public Text txttime, txtbeer;
     public AlcoholEffect alcoholeffect;
     public ClockScript clock;

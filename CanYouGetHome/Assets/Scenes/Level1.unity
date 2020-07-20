@@ -20123,7 +20123,7 @@ MonoBehaviour:
   alcoholeff: {fileID: 1240449040}
   vmax: 14
   steering_streangth: 30
-  WinArea: {fileID: 0}
+  WinArea: {fileID: 1790509242}
   acce: 10
   dece: -15
 --- !u!54 &1749321551

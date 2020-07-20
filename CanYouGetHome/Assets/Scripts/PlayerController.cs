@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //public HealthSystem healthsys;
-    public LevelManagerScript levelmanager;
+    public Level1Manager levelmanager;
     public AlcoholEffect alcoholeff;
-    public float vmax = 18f; // [m/sec]
+    public float vmax0 = 18f; // [m/sec]
+    private float vmax; // [m/sec]
     public float steering_streangth = 30f;
     public Transform WinArea;
     private Rigidbody rb;
@@ -27,15 +28,14 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        
         rb = GetComponent<Rigidbody>();
         
         //rb.velocity = transform.forward * v0;
-        rotation_factor = steering_streangth * 0.1f * GameManagerScript.Instance.SteeringFactor;
-        force_factor = steering_streangth * 2.0f * GameManagerScript.Instance.SteeringFactor;
+        rotation_factor = steering_streangth * 0.1f * GameManager.Instance.SteeringFactor;
+        force_factor = steering_streangth * 2.0f * GameManager.Instance.SteeringFactor;
 
         vel = 0f;
-        //vmax = vmax0;
+        vmax = vmax0 * GameManager.Instance.SpeedFactor;
     }
 
     void FixedUpdate()
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {       
         transform.position += transform.forward * vel * Time.deltaTime; // moving forward at speed of vel
-
+        
         if (Input.GetKey(KeyCode.Escape))
         {
             levelmanager.GameOver();

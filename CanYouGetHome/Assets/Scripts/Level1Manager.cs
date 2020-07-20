@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
-public class LevelManagerScript : MonoBehaviour
+public class Level1Manager : MonoBehaviour
 {
     public Image CrashScreen;
     public Image WinScreen;
@@ -30,12 +30,13 @@ public class LevelManagerScript : MonoBehaviour
 
     public void RestartGame()
     {
-        GameManagerScript.Instance.RestartGame();
+        GameManager.Instance.RestartGame();
+        Time.timeScale = 1;
     }
 
     public void QuitGame()
     {
-        GameManagerScript.Instance.QuitGame();
+        GameManager.Instance.QuitGame();
     }
 
 }

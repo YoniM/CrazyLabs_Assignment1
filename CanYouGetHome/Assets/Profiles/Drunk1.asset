@@ -91,4 +91,4 @@ MonoBehaviour:
     value: 25
   kernelSize:
     overrideState: 1
-    value: 1
+    value: 2

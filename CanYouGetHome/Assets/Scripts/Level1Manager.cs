@@ -23,7 +23,7 @@ public class Level1Manager : MonoBehaviour
 
     private void Update()
     {
-        if (!DeactivatedInputsText && Input.anyKey)
+        if (!DeactivatedInputsText && (Input.anyKey || SwipeInput.Instance.IsDraging))
         {
             InputsText.gameObject.SetActive(false);
             DeactivatedInputsText = true;

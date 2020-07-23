@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float vmax0 = 18f; // [m/sec]
     private float vmax; // [m/sec]
     public float steering_streangth = 30f;
+    public float MaxSteering = 1f;
     public Transform WinArea;
     private Rigidbody rb;
 
@@ -40,8 +41,10 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        moveX = Input.GetAxis("Horizontal");
-        Accelerate = Input.GetKey("space");
+        moveX = Mathf.Max(Mathf.Min(Input.GetAxis("Horizontal") + SwipeInput.Instance.Steer , MaxSteering),-MaxSteering);
+        Debug.Log(moveX);
+        Accelerate = Input.GetKey("space") || SwipeInput.Instance.IsDraging;
+
         if (Accelerate || (moveX != 0))
         {
             float force = force_factor * (vel * moveX) * Time.deltaTime;

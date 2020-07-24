@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     #region Singleton Setup
     public static GameManager Instance { get; private set; }
 
+    public bool gamestartsnow;
+
     private void Awake()
     {
         if (Instance == null)
@@ -21,6 +23,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        gamestartsnow = true;
     }
 
     #endregion Singleton Setup
@@ -29,6 +33,12 @@ public class GameManager : MonoBehaviour
     public float SpeedFactor = 1f;
     public float BeerDensityMultiplier = 1f;
     public float ObstacleDensityMultiplier = 1f;
+
+    private void Update()
+    {
+        if (gamestartsnow)
+            gamestartsnow = false;
+    }
 
     public void LoadLevel1()
     {

@@ -24,7 +24,7 @@ public class SwipeInput : MonoBehaviour
     #endregion Singleton Setup
 
     [Header("Tweaks")]
-    [SerializeField] private float deadzone = Screen.width * 0.1f;
+    [SerializeField] private float deadzone = Screen.width * 0.05f;
     [SerializeField] private float vertical_release = Screen.height * 0.5f;
     [SerializeField] public float sensitivity = 0.005f;
 

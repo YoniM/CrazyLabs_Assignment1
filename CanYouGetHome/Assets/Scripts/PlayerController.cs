@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         moveX = Mathf.Max(Mathf.Min(Input.GetAxis("Horizontal") + SwipeInput.Instance.Steer , MaxSteering),-MaxSteering);
-        Debug.Log(moveX);
         Accelerate = Input.GetKey("space") || SwipeInput.Instance.IsDraging;
 
         if (Accelerate || (moveX != 0))

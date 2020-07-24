@@ -16,6 +16,12 @@ public class Level1Manager : MonoBehaviour
     {
         main_directional_light.intensity = 0.02f;
         RenderSettings.fog = true;
+
+        #if UNITY_EDITOR
+                InputsText.text = "Press SPACE to accelerate, and ARROWS to steer";
+        #else
+                InputsText.text = "Swipe fingers to accelerate and steer";
+        #endif
         InputsText.gameObject.SetActive(true);
         DeactivatedInputsText = false;
         ProfileManager.Instance.ChangeProfile(0);

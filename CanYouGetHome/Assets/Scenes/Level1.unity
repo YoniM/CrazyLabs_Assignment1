@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 0
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 3876d0e183013044aab5adba683217d7, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: c82a334cf5a5e47978749c210cee72a7, type: 2}
   m_HaloStrength: 1
   m_FlareStrength: 1
   m_FlareFadeSpeed: 1
@@ -16106,8 +16106,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.29410398, y: 0.4854331}
   m_AnchorMax: {x: 0.704472, y: 0.7784331}
-  m_AnchoredPosition: {x: 0.5, y: 0.5}
-  m_SizeDelta: {x: -1, y: -1}
+  m_AnchoredPosition: {x: 0.5, y: 0}
+  m_SizeDelta: {x: -1, y: -30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1463062334
 MonoBehaviour:
@@ -16141,10 +16141,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Press "space" to accelerate, and the arrows to steer.
-
-    (Finger swiping
-    will be implemented in the future)'
+  m_Text: Press "space" to accelerate, and the arrows to steer.
 --- !u!222 &1463062335
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19582,6 +19579,7 @@ MonoBehaviour:
   alcoholeff: {fileID: 1240449040}
   vmax0: 18
   steering_streangth: 30
+  MaxSteering: 1
   WinArea: {fileID: 1790509242}
   acce: 10
   dece: -15

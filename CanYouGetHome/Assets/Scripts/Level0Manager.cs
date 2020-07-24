@@ -5,9 +5,16 @@ using UnityEngine.UI;
 
 public class Level0Manager : MonoBehaviour
 {
+    public Text Maintitle, Subtitle;
+
     public GameObject StoryText;
     public GameObject ButtonsPanel;
     public GameObject SettingsPanel;
+
+    bool beforefadeout, afterfadeout;
+    public float fadetime = 1f;
+    FadeScript fadeawayMaintitle, fadeawaySubtitle;
+    float t0;
 
     public Slider SteeringSlider;
     public Slider SpeedSlider;
@@ -16,9 +23,20 @@ public class Level0Manager : MonoBehaviour
 
     private void Start()
     {
-        StoryText.SetActive(true);
-        ButtonsPanel.SetActive(true);
+        fadeawayMaintitle = Maintitle.GetComponent<FadeScript>();
+        fadeawaySubtitle = Subtitle.GetComponent<FadeScript>();
+
+        bool gamestartsnow = GameManager.Instance.gamestartsnow;
+        Maintitle.gameObject.SetActive(gamestartsnow);
+        Subtitle.gameObject.SetActive(gamestartsnow);
+        StoryText.SetActive(!gamestartsnow);
+        ButtonsPanel.SetActive(!gamestartsnow);
         SettingsPanel.SetActive(false);
+        
+
+        beforefadeout = gamestartsnow;
+        afterfadeout = !gamestartsnow;
+        t0 = Time.time;
 
         SteeringSlider.value = GameManager.Instance.SteeringFactor;
         SpeedSlider.value = GameManager.Instance.SpeedFactor;
@@ -28,8 +46,26 @@ public class Level0Manager : MonoBehaviour
 
     private void Update()
     {
+        if (beforefadeout && (Input.anyKey || Time.time - t0 > fadetime))
+        {
+            beforefadeout = false;
+            fadeawayMaintitle.FadeAwayText();
+            fadeawaySubtitle.FadeAwayText();
+        }
+        if (!afterfadeout && !Maintitle.IsActive())
+        {
+            afterfadeout = true;
+            Maintitle.gameObject.SetActive(false);
+            Subtitle.gameObject.SetActive(false);
+            
+            StoryText.SetActive(true);
+            ButtonsPanel.SetActive(true);
+        }
+
+
         if (Input.GetKey(KeyCode.Escape))
-            CloseSettingsPanel();
+            if (afterfadeout)
+                CloseSettingsPanel();
     }
 
     #region Panel Interfaces
@@ -48,6 +84,7 @@ public class Level0Manager : MonoBehaviour
     }
     #endregion Panel Interfaces
 
+    
 
     #region Atributes
     public void SetSteeringFactor() { GameManager.Instance.SteeringFactor = SteeringSlider.value; }

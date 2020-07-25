@@ -11,11 +11,12 @@ public class PlayerController : MonoBehaviour
     private float vmax; // [m/sec]
     public float steering_streangth = 30f;
     public float MaxSteering = 1f;
+    public float mincrashvelocity = 5.0f;
     public Transform WinArea;
     private Rigidbody rb;
 
     private float vel; // [m/sec]
-    public float acce = 18f , dece = -18f; // [m/sec^2]
+    public float acce = 18f, dece = -18f; // [m/sec^2]
     private bool Accelerate;
 
     float rotation_factor, force_factor;
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        
+
         //rb.velocity = transform.forward * v0;
         rotation_factor = steering_streangth * 0.1f * GameManager.Instance.SteeringFactor;
         force_factor = steering_streangth * 2.0f * GameManager.Instance.SteeringFactor;
@@ -41,9 +42,9 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        moveX = Mathf.Max(Mathf.Min(Input.GetAxis("Horizontal") + SwipeInput.Instance.Steer , MaxSteering),-MaxSteering);
+        moveX = Mathf.Max(Mathf.Min(Input.GetAxis("Horizontal") + SwipeInput.Instance.Steer, MaxSteering), -MaxSteering);
         Accelerate = Input.GetKey("space") || SwipeInput.Instance.IsDraging;
-
+        
         if (Accelerate || (moveX != 0))
         {
             float force = force_factor * (vel * moveX) * Time.deltaTime;
@@ -84,7 +85,7 @@ public class PlayerController : MonoBehaviour
         ObstacleScript obs;
         BeerScript beer;
         //StreetScript street;
-        
+
         obs = collision.gameObject.GetComponent<ObstacleScript>();
         beer = collision.gameObject.GetComponent<BeerScript>();
 
@@ -101,22 +102,28 @@ public class PlayerController : MonoBehaviour
             alcoholeff.BeerUp();
             beer.DestroyThisInstance();
         }
-        if (obs!=null)
+        if (obs != null)
         {
-            StopCar(Mathf.Max((1 - obs.mass / rb.mass),0f));
-            if (obs.crashable)
-                //healthsys.AddCrash();
+            OtherCarScript othercar = obs.GetComponentInParent<OtherCarScript>();
+            if (othercar != null || (obs.crashable && vel >= mincrashvelocity)) // ! I need to implement relative velocity instead of vel
+            {
+                StopCar(Mathf.Max((1 - obs.mass / rb.mass), 0f));
                 levelmanager.GameOver();
-
-            obs.ObstableWasHit();
+            }
+            else
+            {
+                StopCar(Mathf.Max((1 - obs.mass / rb.mass), 0f));
+                obs.ObstableWasHit();
+            }
+            
         }
-        
+
     }
 
     private void AccelerateCar(float acceleration)
     {
         vel += acceleration * Time.deltaTime;
-        vel = Mathf.Max(Mathf.Min(vel, vmax),0);
+        vel = Mathf.Max(Mathf.Min(vel, vmax), 0);
         //SipSystem.ApplyForce(-acceleration * transform.forward);
     }
 

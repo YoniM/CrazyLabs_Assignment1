@@ -105,29 +105,24 @@ public class PlayerController : MonoBehaviour
         //SipSystem.ApplyForce(-force * transform.right);
     }
 
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        ObstacleScript obs;
         BeerScript beer;
-        //StreetScript street;
-
-        obs = collision.gameObject.GetComponent<ObstacleScript>();
-        beer = collision.gameObject.GetComponent<BeerScript>();
-
-        /*
-        street = collision.gameObject.GetComponent<StreetScript>();
-        if (street != null)
-            vmax = vmax0 * street.IncreasedVelocityFactor;
-        else
-            vmax = vmax0;
-        */
-
+        beer = other.gameObject.GetComponent<BeerScript>();
         if (beer != null)
         {
             alcoholeff.BeerUp();
             beer.DestroyThisInstance();
         }
+    }
+    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        ObstacleScript obs;
+        
+        obs = collision.gameObject.GetComponent<ObstacleScript>();
+
         if (obs != null)
         {
             OtherCarScript othercar = obs.GetComponentInParent<OtherCarScript>();

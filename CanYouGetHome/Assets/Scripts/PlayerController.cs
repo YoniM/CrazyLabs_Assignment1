@@ -26,7 +26,8 @@ public class PlayerController : MonoBehaviour
     int prevmovedirection, movedirection;
     float rnd;
 
-    //public SipScript SipSystem;
+    int InputType;
+    
 
     void Start()
     {
@@ -38,13 +39,15 @@ public class PlayerController : MonoBehaviour
 
         vel = 0f;
         vmax = vmax0 * GameManager.Instance.SpeedFactor;
+
+        InputType = GameManager.Instance.InputType;
     }
 
     void FixedUpdate()
     {
-        moveX = Mathf.Max(Mathf.Min(Input.GetAxis("Horizontal") + SwipeInput.Instance.Steer, MaxSteering), -MaxSteering);
-        Accelerate = Input.GetKey("space") || SwipeInput.Instance.IsDraging;
         
+        GetInputs();
+
         if (Accelerate || (moveX != 0))
         {
             float force = force_factor * (vel * moveX) * Time.deltaTime;
@@ -52,6 +55,30 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(ApplyMovement(force, rotation, Accelerate, alcoholeff.ActionTimeDelay));
         }
     }
+
+    private void GetInputs()
+    {
+        switch (InputType)
+        {
+            case 0: // Swipe (Mobile)
+                moveX = SwipeInput.Instance.Steer;
+                Accelerate = SwipeInput.Instance.IsDraging;
+                break;
+            case 1: // Buttons (Mobile)
+                moveX = levelmanager.moveRight;
+                Accelerate = true;
+                Debug.Log("MoveX: " + moveX.ToString());
+                break;
+            case 2: // Keyboard (Mobile)
+                moveX = Input.GetAxis("Horizontal");
+                Accelerate = Input.GetKey("space");
+                break;
+        }
+        moveX = Mathf.Max(Mathf.Min(moveX, MaxSteering), -MaxSteering);
+
+
+    }
+
 
     private void Update()
     {

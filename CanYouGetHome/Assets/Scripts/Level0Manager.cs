@@ -7,6 +7,7 @@ public class Level0Manager : MonoBehaviour
 {
     public Text Maintitle, Subtitle;
 
+    public GameObject GameTitle;
     public GameObject StoryText;
     public GameObject ButtonsPanel;
     public GameObject SettingsPanel;
@@ -20,6 +21,7 @@ public class Level0Manager : MonoBehaviour
     public Slider SpeedSlider;
     public Slider BeersSlider;
     public Slider ObstaclesSlider;
+    public Dropdown InputTypeDropDown;
 
     private void Start()
     {
@@ -27,6 +29,8 @@ public class Level0Manager : MonoBehaviour
         fadeawaySubtitle = Subtitle.GetComponent<FadeScript>();
 
         bool gamestartsnow = GameManager.Instance.gamestartsnow;
+
+        GameTitle.gameObject.SetActive(gamestartsnow);
         Maintitle.gameObject.SetActive(gamestartsnow);
         Subtitle.gameObject.SetActive(gamestartsnow);
         StoryText.SetActive(!gamestartsnow);
@@ -42,6 +46,7 @@ public class Level0Manager : MonoBehaviour
         SpeedSlider.value = GameManager.Instance.SpeedFactor;
         BeersSlider.value = GameManager.Instance.BeerDensityMultiplier;
         ObstaclesSlider.value = GameManager.Instance.ObstacleDensityMultiplier;
+        InputTypeDropDown.value = GameManager.Instance.InputType;
     }
 
     private void Update()
@@ -84,9 +89,10 @@ public class Level0Manager : MonoBehaviour
     }
     #endregion Panel Interfaces
 
-    
+
 
     #region Atributes
+    public void SetInputType() { GameManager.Instance.InputType = InputTypeDropDown.value; Debug.LogError(InputTypeDropDown.value); }
     public void SetSteeringFactor() { GameManager.Instance.SteeringFactor = SteeringSlider.value; }
     public void SetSpeedFactor() { GameManager.Instance.SpeedFactor = SpeedSlider.value; }
     public void SetBeerDensityMultiplier() { GameManager.Instance.BeerDensityMultiplier = BeersSlider.value; }

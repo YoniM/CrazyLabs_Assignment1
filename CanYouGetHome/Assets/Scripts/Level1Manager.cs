@@ -12,6 +12,13 @@ public class Level1Manager : MonoBehaviour
     public Light main_directional_light;
     public Text InputsText;
     bool DeactivatedInputsText;
+
+    public float moveRight;
+
+    public void MoveRight() { moveRight = 1f;}
+    public void MoveLeft() { moveRight = -1f; }
+    public void MoveRelease() { moveRight = 0f; }
+
     private void Start()
     {
         main_directional_light.intensity = 0.02f;

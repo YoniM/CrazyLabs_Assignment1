@@ -17,7 +17,7 @@ public class Level1Manager : MonoBehaviour
     bool DeactivatedInputsText;
 
     public float moveRight;
-    public float rateMoveChange = 100f; // % per Time.DeltaTime;
+    public float rateMoveChange = 30f; // % per Time.DeltaTime;
 
     public void MoveRight() { moveRight += rateMoveChange * Time.deltaTime; }
     public void MoveLeft() { moveRight -= rateMoveChange * Time.deltaTime; }

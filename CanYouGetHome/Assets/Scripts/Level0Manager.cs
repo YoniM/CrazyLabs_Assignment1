@@ -92,7 +92,7 @@ public class Level0Manager : MonoBehaviour
 
 
     #region Atributes
-    public void SetInputType() { GameManager.Instance.InputType = InputTypeDropDown.value; Debug.LogError(InputTypeDropDown.value); }
+    public void SetInputType() { GameManager.Instance.InputType = InputTypeDropDown.value;}
     public void SetSteeringFactor() { GameManager.Instance.SteeringFactor = SteeringSlider.value; }
     public void SetSpeedFactor() { GameManager.Instance.SpeedFactor = SpeedSlider.value; }
     public void SetBeerDensityMultiplier() { GameManager.Instance.BeerDensityMultiplier = BeersSlider.value; }

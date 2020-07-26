@@ -11,12 +11,16 @@ public class Level1Manager : MonoBehaviour
     public Image WinScreen;
     public Light main_directional_light;
     public Text InputsText;
+    public GameObject buttonLeft;
+    public GameObject buttonRight;
+
     bool DeactivatedInputsText;
 
     public float moveRight;
+    public float rateMoveChange = 100f; // % per Time.DeltaTime;
 
-    public void MoveRight() { moveRight = 1f;}
-    public void MoveLeft() { moveRight = -1f; }
+    public void MoveRight() { moveRight += rateMoveChange * Time.deltaTime; }
+    public void MoveLeft() { moveRight -= rateMoveChange * Time.deltaTime; }
     public void MoveRelease() { moveRight = 0f; }
 
     private void Start()
@@ -29,6 +33,12 @@ public class Level1Manager : MonoBehaviour
         #else
                 InputsText.text = "Swipe fingers to accelerate and steer";
         #endif
+
+        if (GameManager.Instance.InputType != 1)
+        {
+            buttonLeft.SetActive(false);
+            buttonRight.SetActive(false);
+        }
         InputsText.gameObject.SetActive(true);
         DeactivatedInputsText = false;
         ProfileManager.Instance.ChangeProfile(0);

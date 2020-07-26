@@ -67,7 +67,6 @@ public class PlayerController : MonoBehaviour
             case 1: // Buttons (Mobile)
                 moveX = levelmanager.moveRight;
                 Accelerate = true;
-                Debug.Log("MoveX: " + moveX.ToString());
                 break;
             case 2: // Keyboard (Mobile)
                 moveX = Input.GetAxis("Horizontal");

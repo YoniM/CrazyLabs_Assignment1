@@ -28,13 +28,18 @@ public class Level1Manager : MonoBehaviour
         main_directional_light.intensity = 0.02f;
         RenderSettings.fog = true;
 
-        #if UNITY_EDITOR
-                InputsText.text = "Press SPACE to accelerate, and ARROWS to steer";
-        #else
-                InputsText.text = "Swipe fingers to accelerate and steer";
-        #endif
+//        #if UNITY_EDITOR
+//                InputsText.text = "Press SPACE to accelerate, and ARROWS to steer";
+//        #else
+        if (GameManager.Instance.InputType == 0)
+            InputsText.text = "Swipe fingers to accelerate and steer";
+        else if (GameManager.Instance.InputType == 1)
+            InputsText.text = "Use arrows to steer";
+        else if (GameManager.Instance.InputType == 2)
+            InputsText.text = "Press SPACE to accelerate, and ARROWS to steer";
+//        #endif
 
-        if (GameManager.Instance.InputType != 1)
+            if (GameManager.Instance.InputType != 1)
         {
             buttonLeft.SetActive(false);
             buttonRight.SetActive(false);

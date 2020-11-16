@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public AudioClip sipclip;
+    AudioSource audiosource;
+
     //public HealthSystem healthsys;
     public Level1Manager levelmanager;
     public AlcoholEffect alcoholeff;
@@ -31,6 +34,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        audiosource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
 
         //rb.velocity = transform.forward * v0;
@@ -111,6 +115,7 @@ public class PlayerController : MonoBehaviour
         beer = other.gameObject.GetComponent<BeerScript>();
         if (beer != null)
         {
+            audiosource.PlayOneShot(sipclip, 2f);
             alcoholeff.BeerUp();
             beer.DestroyThisInstance();
         }

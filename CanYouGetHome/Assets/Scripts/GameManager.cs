@@ -25,7 +25,9 @@ public class GameManager : MonoBehaviour
         }
 
         gamestartsnow = true;
-    }
+
+        InputType = 2; // 0 - mobile swipe ; 1 - mobile buttons; 2 - keyboard
+}
 
     #endregion Singleton Setup
 
@@ -33,7 +35,7 @@ public class GameManager : MonoBehaviour
     public float SpeedFactor = 1f;
     public float BeerDensityMultiplier = 1f;
     public float ObstacleDensityMultiplier = 1f;
-    public int InputType = 1; // 0 - mobile swipe ; 1 - mobile buttons; 2 - keyboard
+    public int InputType; // 0 - mobile swipe ; 1 - mobile buttons; 2 - keyboard
     private void Update()
     {
         if (gamestartsnow)

@@ -17,6 +17,7 @@ public class AlcoholEffect : MonoBehaviour
     public int beers_per_effect = 1;
     int alcoholeffectcount;
     public int WhenMotionDelay = 1, WhenAtaxia = 2, WhenBlur = 3, WhenNarrowingVision = 4;
+    public int WhenPrintWorseningEffects = 6;
 
     public float ActionTimeDelay { get { return actionTimeDelay; } }
     public int BeerCount() {  return beercount;  }
@@ -28,8 +29,8 @@ public class AlcoholEffect : MonoBehaviour
     {
         actionTimeDelay = 0f;
         beercount = 0;
-        UpdateBeerText();
         alcoholeffectcount = 0;
+        UpdateBeerText();
     }
 
     public void BeerUp()
@@ -56,6 +57,8 @@ public class AlcoholEffect : MonoBehaviour
                 ProfileManager.Instance.ChangeProfile(2);
                 EffectText.ShowText("Alcohol narrows your field of vision");
             }
+            if (alcoholeffectcount == WhenPrintWorseningEffects)
+                EffectText.ShowText("Alcohol effects worsen with each sip...");
         }
 
         #region Incremental increase of effects 
@@ -71,6 +74,9 @@ public class AlcoholEffect : MonoBehaviour
         #endregion Incremental increase of effects
     }
 
-    void UpdateBeerText() { beertext.text = beercount.ToString(); }
+    void UpdateBeerText() { 
+        if (beertext!=null)
+            beertext.text = beercount.ToString();
+    }
 
 }

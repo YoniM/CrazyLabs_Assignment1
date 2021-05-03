@@ -13,7 +13,7 @@ public class SipBodyScript : MonoBehaviour
         
         if (beer != null)
         {
-            alcoholeff.BeerUp();
+            //alcoholeff.BeerUp();
             other.gameObject.SetActive(false);
         }
     }

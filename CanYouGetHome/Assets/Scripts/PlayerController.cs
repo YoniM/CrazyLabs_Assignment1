@@ -115,12 +115,12 @@ public class PlayerController : MonoBehaviour
         beer = other.gameObject.GetComponent<BeerScript>();
         if (beer != null)
         {
-            audiosource.PlayOneShot(sipclip, 2f);
-            alcoholeff.BeerUp();
+            //    alcoholeff.BeerUp();
             beer.DestroyThisInstance();
+            audiosource.PlayOneShot(sipclip, 2f);
         }
     }
-    
+
 
     private void OnCollisionEnter(Collision collision)
     {

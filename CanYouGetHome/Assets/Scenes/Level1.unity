@@ -527,7 +527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4884130492571914, guid: 331560f2206dc024cb084301a19c05ad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8
+      value: 3.9
       objectReference: {fileID: 0}
     - target: {fileID: 4884130492571914, guid: 331560f2206dc024cb084301a19c05ad, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6600,7 +6600,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4884130492571914, guid: 331560f2206dc024cb084301a19c05ad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.864
+      value: 3.639
       objectReference: {fileID: 0}
     - target: {fileID: 4884130492571914, guid: 331560f2206dc024cb084301a19c05ad, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13856,6 +13856,7 @@ MonoBehaviour:
   WhenAtaxia: 2
   WhenBlur: 3
   WhenNarrowingVision: 4
+  WhenPrintWorseningEffects: 6
   EffectText: {fileID: 173477180}
 --- !u!4 &1240449041
 Transform:
@@ -13878,7 +13879,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1240449039}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -19818,7 +19819,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6788514, y: 1.1095347, z: 4.24569}
+  m_Size: {x: 1.1473473, y: 1.1095347, z: 4.24569}
   m_Center: {x: 0, y: 0.6906476, z: 0.00000023841858}
 --- !u!114 &1749321550
 MonoBehaviour:
